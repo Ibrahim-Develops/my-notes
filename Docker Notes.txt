@@ -1,0 +1,60 @@
+#Dockerfile (frontend)
+
+FROM node:20.17.0
+WORKDIR /App
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+EXPOSE 5173
+CMD ["npm", "run", "dev"]
+
+
+#To Create a Network
+
+docker network create network-name
+
+
+#To Build a Image
+
+docker build -t frontend .
+
+
+#To Run a Container on that Network
+
+docker run -d --name frontend-container --network network-name -p 5173:5173 frontend
+
+
+#Dockerfile (backendend)
+
+FROM node:20.17.0
+WORKDIR /App
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+EXPOSE 7001
+CMD ["npm", "start"]
+
+
+#To Build a Image
+
+docker build -t backend .
+
+
+#To Run a Container on that Network
+
+docker run -d --name backend-container --network network-name -p 7001:7001 backend
+
+
+#vite.config.js
+
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    port: 5173, 
+  },
+})
+
