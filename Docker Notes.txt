@@ -59,6 +59,10 @@ export default defineConfig({
 })
 
 
+#Creating Mongodb Container
+docker run --name mongodb-container -v C:\Users\pakistan\Desktop\Books.books:/data/db -p 2701:27017 -d mongo
+
+
 #Pushing Image To Docker HUb
 docker tag <image-id> ibrahimdevelopss/book-store:latest
 
