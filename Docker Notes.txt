@@ -58,3 +58,15 @@ export default defineConfig({
   },
 })
 
+
+#Pushing Image To Docker HUb
+docker tag <image-id> ibrahimdevelopss/book-store:latest
+
+
+#Log in to Docker Hub
+docker login
+
+
+#Push the Image to Docker Hub
+docker push ibrahimdevelopss/book-store:latest
+
