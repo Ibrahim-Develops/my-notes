@@ -8,21 +8,14 @@ COPY . .
 EXPOSE 5173
 CMD ["npm", "run", "dev"]
 
-
 #To Create a Network
-
 docker network create network-name
 
-
 #To Build a Image
-
 docker build -t frontend .
 
-
 #To Run a Container on that Network
-
 docker run -d --name frontend-container --network network-name -p 5173:5173 frontend
-
 
 #Dockerfile (backendend)
 
@@ -34,16 +27,11 @@ COPY . .
 EXPOSE 7001
 CMD ["npm", "start"]
 
-
 #To Build a Image
-
 docker build -t backend .
 
-
 #To Run a Container on that Network
-
 docker run -d --name backend-container --network network-name -p 7001:7001 backend
-
 
 #vite.config.js
 
@@ -58,19 +46,14 @@ export default defineConfig({
   },
 })
 
-
 #Creating Mongodb Container
 docker run --name mongodb-container -v C:\Users\pakistan\Desktop\Books.books:/data/db -p 2701:27017 -d mongo
-
 
 #Pushing Image To Docker HUb
 docker tag <image-id> ibrahimdevelopss/book-store:latest
 
-
 #Log in to Docker Hub
 docker login
 
-
 #Push the Image to Docker Hub
 docker push ibrahimdevelopss/book-store:latest
-
