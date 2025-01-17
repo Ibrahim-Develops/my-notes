@@ -1,0 +1,29 @@
+#To Create Database
+CREATE DATABASE demo;
+
+#To Create User With Password
+CREATE USER ibrahim WITH PASSWORD '678486358';
+
+#To Grant Privileges to User
+GRANT ALL PRIVILEGES ON DATABASE demo TO ibrahim;
+
+#To Revoke Privileges
+REVOKE ALL PRIVILEGES ON DATABASE demo FROM ibrahim;
+
+#To List Databases
+\l
+
+#To Connect to a Database
+\c demo;
+
+#To List All Users
+\du
+
+#To Delete a Database
+DROP DATABASE demo;
+
+#To Delete a User
+DROP USER ibrahim;
+
+#To Exit
+\q
